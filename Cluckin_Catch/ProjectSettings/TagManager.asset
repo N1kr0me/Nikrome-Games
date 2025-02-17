@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Item
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -11,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - PlayItems
+  - Background
   - 
   - 
   - 
@@ -38,16 +40,16 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3364069449
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Foreground
-    uniqueID: 3364069449
     locked: 0
   - name: PlayItems
     uniqueID: 4011463931
     locked: 0
-  - name: Background
+  - name: Foreground
     uniqueID: 1031754541
     locked: 0
   m_RenderingLayers:
