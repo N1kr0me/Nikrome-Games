@@ -63,4 +63,9 @@ public class GameManager : MonoBehaviour
     {
         return flag;
     }
+
+    public int GetChances()
+    {
+        return maxChances-chances;
+    }
 }

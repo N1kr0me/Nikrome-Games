@@ -35,18 +35,19 @@ public class Item : MonoBehaviour
         }
         else
         {
+            // If the item collides with the ground
+            if (collision.CompareTag("Ground"))
+            {
+                gameManager.DecreaseChances(); // Decrease chances
+                DestroyAll(); // Destroy the item
+            }
             // If the item collides with the player
             if (collision.CompareTag("Player"))
             {
                 gameManager.IncreaseScore(itemData.scoreValue); // Increase score
                 DestroyAll(); // Destroy the item
             }
-            // If the item collides with the ground
-            else if (collision.CompareTag("Ground"))
-            {
-                gameManager.DecreaseChances(); // Decrease chances
-                DestroyAll(); // Destroy the item
-            }
+            
         }
     }
 

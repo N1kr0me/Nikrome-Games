@@ -6,6 +6,7 @@ public class ItemSpawner : MonoBehaviour
     public float spawnRate = 1f; // Start spawn time
     private float rate;
     private GameManager gameManager; // Reference to GameManager
+    public GameObject ItemParent;
 
     void Start()
     {
@@ -25,10 +26,11 @@ public class ItemSpawner : MonoBehaviour
             Vector2 spawnPos = new Vector2(randomX, transform.position.y+2f);
 
             GameObject itemToSpawn = itemPrefab[Random.Range(0,itemPrefab.Length)]; // Default to egg spawn
+            itemToSpawn.transform.localScale = Vector3.one;
             
 
             // Instantiate the item and make it as a child of the spawner
-            GameObject item = Instantiate(itemToSpawn, spawnPos, Quaternion.identity,transform);
+            GameObject item = Instantiate(itemToSpawn, spawnPos, Quaternion.identity,ItemParent.transform);
 
             // Adjust spawn time after each egg caught (reduce spawn time)
             rate = Mathf.Max(spawnRate*0.5f, spawnRate * (1f - 0.01f*gameManager.GetCount())); // Reduce by 0.01% every item caught
