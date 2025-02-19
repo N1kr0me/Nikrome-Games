@@ -6,16 +6,21 @@ public class PlayerControl : MonoBehaviour
     public float moveSpeed = 5f;
     private Vector2 moveInput;
     private float screenHalfWidthWorld;
+    private GameManager gameManager;
 
     void Start()
     {
+        gameManager = GameManager.Instance;
         CalculateScreenBounds();
     }
 
     void Update()
     {
-        HandleInput();
-        MovePlayer();
+        if(gameManager.GetFlag())
+        {
+            HandleInput();
+            MovePlayer();
+        }
         ClampPosition();
     }
 

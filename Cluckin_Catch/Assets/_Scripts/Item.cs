@@ -20,8 +20,8 @@ public class Item : MonoBehaviour
         {
             transform.Translate(Vector2.down * Fall * Time.deltaTime);
         }
-        else
-        {
+        else if(!Collided)
+        {             
             DestroyAll();
         }
     }
@@ -30,7 +30,7 @@ public class Item : MonoBehaviour
     {
         if(Collided)
         {
-            DestroyAll();
+            //DestroyAll();
             return;
         }
         else
@@ -38,11 +38,17 @@ public class Item : MonoBehaviour
             // If the item collides with the ground
             if (collision.CompareTag("Ground"))
             {
-                gameManager.DecreaseChances(); // Decrease chances
-                DestroyAll(); // Destroy the item
+                Collided = true;
+                Fall=0f;
+                if(!itemData.Bonus)
+                {
+                    gameManager.DecreaseChances(); // Decrease chances only is NormalEgg
+                }
+                GetComponent<SpriteRenderer>().sprite = itemData.brokenSprite; // Change to broken egg sprite
+                Invoke(nameof(DestroyAll), 5f); // Destroy after 1 second
             }
             // If the item collides with the player
-            if (collision.CompareTag("Player"))
+            else if (collision.CompareTag("Player"))
             {
                 gameManager.IncreaseScore(itemData.scoreValue); // Increase score
                 DestroyAll(); // Destroy the item

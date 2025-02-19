@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1309539494527392947}
   - component: {fileID: 7527409579281664431}
   - component: {fileID: 1328565574189946464}
-  - component: {fileID: -7029425354833538203}
   - component: {fileID: 6457576487452443072}
+  - component: {fileID: 6059576382761509859}
   m_Layer: 6
   m_Name: Normal Egg
   m_TagString: Item
@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 1031754541
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -7357145036106040768, guid: 387b6b1204bab5445beb557231821836, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.55, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,8 +103,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: eeab151380e6a1f4c9863868947dd189, type: 2}
---- !u!58 &-7029425354833538203
-CircleCollider2D:
+--- !u!50 &6457576487452443072
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2573153475197814390}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
+--- !u!68 &6059576382761509859
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,32 +164,36 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.000000029802322, y: 0}
-  m_Radius: 0.078321904
---- !u!50 &6457576487452443072
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2573153475197814390}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.044754088, y: 0.18462834}
+  - {x: -0.04588564, y: 0.14460464}
+  - {x: -0.084796146, y: 0.14522018}
+  - {x: -0.08619334, y: 0.10676948}
+  - {x: -0.12567033, y: 0.10611929}
+  - {x: -0.12501189, y: 0.025227526}
+  - {x: -0.1651946, y: 0.025386257}
+  - {x: -0.165867, y: -0.1047064}
+  - {x: -0.12586384, y: -0.10567557}
+  - {x: -0.12581265, y: -0.14526352}
+  - {x: -0.08538579, y: -0.14489765}
+  - {x: -0.08534298, y: -0.18492839}
+  - {x: 0.08516607, y: -0.18564172}
+  - {x: 0.08543891, y: -0.1449757}
+  - {x: 0.08566691, y: -0.14523163}
+  - {x: 0.12529063, y: -0.14495447}
+  - {x: 0.12522796, y: -0.1049427}
+  - {x: 0.1652984, y: -0.104820505}
+  - {x: 0.16511807, y: 0.025582828}
+  - {x: 0.12562922, y: 0.025579762}
+  - {x: 0.12597273, y: 0.10520196}
+  - {x: 0.08675197, y: 0.1058254}
+  - {x: 0.08670518, y: 0.1452106}
+  - {x: 0.04546603, y: 0.14587466}
+  - {x: 0.045818143, y: 0.18526037}
+  - {x: -0.045107424, y: 0.18517151}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

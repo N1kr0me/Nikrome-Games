@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class HUDScore : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI countText;
-    public SpriteRenderer[] lives;
+    public Image[] lives;
     public Sprite FullEgg; 
     public Sprite BrokenEgg;   
     private GameManager gameManager; 
