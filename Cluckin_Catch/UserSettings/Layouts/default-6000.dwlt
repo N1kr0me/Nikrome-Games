@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 976
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 332}
   m_MaxSize: {x: 10000, y: 10000}
@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 497.33325
     height: 920
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -218,8 +218,8 @@ MonoBehaviour:
     y: 0
     width: 244
     height: 576
-  m_MinSize: {x: 201, y: 226}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -915,9 +915,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 0.8741181, y: -1.4320376, z: -0.059152227}
+    m_Target: {x: -3.0501192, y: 0.585556, z: -0.06275406}
     speed: 2
-    m_Value: {x: 0.5947513, y: -1.2598048, z: -0.05623211}
+    m_Value: {x: -3.0501192, y: 0.585556, z: -0.06275406}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -967,9 +967,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 6.7812233
+    m_Target: 7.141095
     speed: 2
-    m_Value: 6.4892087
+    m_Value: 7.141095
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1041,7 +1041,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0efbffff2c9000003c900000
+      m_ExpandedIDs: f8faffff3290000042900000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1371,7 +1371,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites
+    - Assets/Prefabs
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1381,16 +1381,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sprites
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Projects\Unity\Nikrome-Games\Cluckin_Catch
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e0910000
-    m_LastClickedID: 37344
-    m_ExpandedIDs: 000000006e910000709100007291000074910000769100007891000000ca9a3b
+    m_SelectedIDs: e4910000
+    m_LastClickedID: 37348
+    m_ExpandedIDs: 00000000789100007a9100007c9100007e910000809100008291000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1419,7 +1419,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006e9100007091000072910000749100007691000078910000
+    m_ExpandedIDs: 00000000789100007a9100007c9100007e9100008091000082910000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1448,7 +1448,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000b6770000a4e4000086e400000c6200001c8f000000000000409a0000
+    m_ExpandedInstanceIDs: c6230000b6770000a4e4000086e400000c6200001c8f0000409a000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
