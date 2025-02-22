@@ -31,8 +31,9 @@ public class PlayerControl : MonoBehaviour
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
-                float touchX = (touch.position.x / Screen.width) * 2 - 1;
-                moveInput.x = Mathf.Sign(touchX);
+                Vector3 touchWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
+                // Move towards touch smoothly
+                moveInput.x = Mathf.Clamp(touchWorldPos.x - transform.position.x, -1, 1);
             }
             else
             {
@@ -59,7 +60,10 @@ public class PlayerControl : MonoBehaviour
     void CalculateScreenBounds()
     {
         float objectHalfWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
-        float screenHalfWidth = Camera.main.orthographicSize * Screen.width / Screen.height;
+    
+        // Calculate screen half-width dynamically based on the camera's aspect ratio
+        float screenHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
+
         screenHalfWidthWorld = screenHalfWidth - objectHalfWidth;
     }
 }
