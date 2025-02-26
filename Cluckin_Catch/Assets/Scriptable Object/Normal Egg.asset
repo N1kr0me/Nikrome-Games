@@ -18,3 +18,5 @@ MonoBehaviour:
   objectSprite: {fileID: -7357145036106040768, guid: 387b6b1204bab5445beb557231821836, type: 3}
   brokenSprite: {fileID: 5794267909101531319, guid: 8d2fba9baf9b6e24fa0dd106bd2775a0, type: 3}
   SpawnChance: 1
+  Bonus: 0
+  Mult: 1
