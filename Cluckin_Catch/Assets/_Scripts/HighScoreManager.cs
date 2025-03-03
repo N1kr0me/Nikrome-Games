@@ -7,8 +7,7 @@ using System;
 public class HighScoreManager : MonoBehaviour
 {
     public TMP_InputField nameInput;
-    public TMP_Text saveMessage; // Assign "Score Saved" TMP
-    public TMP_Text alreadySavedMessage; // Assign "Already Saved" TMP
+    public TMP_Text SaveMessage; // Assign "Score Saved" TMP
     private bool scoreSaved = false;
     private static int lastSavedScore = -1; // Track if this session's score was saved
 
@@ -18,19 +17,19 @@ public class HighScoreManager : MonoBehaviour
     {
         if (scoreSaved || lastSavedScore == GameManager.Instance.GetScore())
         {
-            alreadySavedMessage.text = "Already saved.";
-            alreadySavedMessage.gameObject.SetActive(true);
+            SaveMessage.text = "Already saved.";
+            SaveMessage.gameObject.SetActive(true);
             return;
         }
 
         if (string.IsNullOrWhiteSpace(nameInput.text)) // Check if name is empty
         {
-            alreadySavedMessage.text = "Enter name to save.";
-            alreadySavedMessage.gameObject.SetActive(true);
+            SaveMessage.text = "Enter name to save.";
+            SaveMessage.gameObject.SetActive(true);
             return;
         }
 
-        alreadySavedMessage.gameObject.SetActive(false); // Hide any previous messages
+        SaveMessage.gameObject.SetActive(false); // Hide any previous messages
 
         string playerName = nameInput.text.Length > 6 ? nameInput.text.Substring(0, 6) : nameInput.text;
         int score = GameManager.Instance.GetScore();
@@ -47,7 +46,8 @@ public class HighScoreManager : MonoBehaviour
 
         SaveHighScores(highScores);
 
-        saveMessage.gameObject.SetActive(true);
+        SaveMessage.text = "Score saved!";
+        SaveMessage.gameObject.SetActive(true);
         scoreSaved = true;
         lastSavedScore = score; // Mark this session’s score as saved
     }
