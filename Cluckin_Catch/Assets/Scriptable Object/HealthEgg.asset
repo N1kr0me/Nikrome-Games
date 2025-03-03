@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf331e78356ad4c4cbff8c3ba924c5eb, type: 3}
+  m_Name: HealthEgg
+  m_EditorClassIdentifier: 
+  itemName: Health Egg
+  fallSpeed: 1
+  scoreValue: 0
+  objectSprite: {fileID: -8410540515004528055, guid: b1a52b9af56ba7446b9aced101cbb572, type: 3}
+  brokenSprite: {fileID: -3467565717422618658, guid: 296934326a140a24c8feea3c78de87bd, type: 3}
+  SpawnChance: 10
+  Bonus: 1
+  Heal: 1
+  Mult: 1

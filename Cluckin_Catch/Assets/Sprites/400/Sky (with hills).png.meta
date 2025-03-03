@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sky (with hills)_0: -7067019238465151507
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

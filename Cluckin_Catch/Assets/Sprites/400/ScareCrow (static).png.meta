@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ScareCrow (static)_0: 3254015046227016118
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

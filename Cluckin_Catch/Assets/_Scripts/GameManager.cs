@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int chances = 0; // Chances 
     public int maxChances = 3; // Max chances before game over
     public int count=0;//no of items caught
+    public GameObject GameOver;
 
     void Awake()
     {
@@ -22,10 +23,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void IncreaseScore(int value)
+    public void IncreaseScore(int value, int c)
     {
         score += value; // Increase score when egg is caught
-        count++; 
+        count+=c; 
         Debug.Log("Egg caught") ;  
     }
 
@@ -39,7 +40,16 @@ public class GameManager : MonoBehaviour
             // Handle game over (you can add scene switching or UI handling here)
             Debug.Log("Game Over");
             flag = false;
+            GameOver.SetActive(true);
         }
+    }
+    public void IncreaseChances()
+    {
+        if(chances!=0 && chances!=maxChances)
+        {
+            chances--; // Decrease chances when an egg is dropped
+        }
+        Debug.Log("Healer Egg Caught ");
     }
 
     public void ResetGame()

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Linq;
+using TMPro;
 public class ItemSpawner : MonoBehaviour
 {   
     public GameObject[] itemPrefab; // Egg prefab
@@ -9,11 +10,31 @@ public class ItemSpawner : MonoBehaviour
     private GameManager gameManager; // Reference to GameManager
     public GameObject ItemParent;
 
+    public TMP_Text CountdownText;
+    public GameObject Countdown;
+    public GameObject HUD; 
+
     void Start()
     {
         gameManager = GameManager.Instance; // Get the GameManager instance
         rate=spawnRate;
-        StartCoroutine(SpawnItem()); // Spawn at regular TIME intervals
+        StartCoroutine(StartCountdown()); // Spawn at regular TIME intervals
+    }
+
+    IEnumerator StartCountdown()
+    {
+        for(int i=3; i>0;i--)
+        {
+            CountdownText.text = i.ToString();
+            yield return new WaitForSeconds(1f);
+        }
+
+        CountdownText.text ="Start!";
+        yield return new WaitForSeconds(1f);
+
+        Countdown.SetActive(false);
+        HUD.SetActive(true);
+        StartCoroutine(SpawnItem());
     }
 
     IEnumerator SpawnItem()

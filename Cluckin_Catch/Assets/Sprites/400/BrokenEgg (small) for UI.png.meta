@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BrokenEgg (small) for UI_0: 6151111026956190552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

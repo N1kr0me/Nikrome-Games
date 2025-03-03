@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf331e78356ad4c4cbff8c3ba924c5eb, type: 3}
+  m_Name: RottenEgg
+  m_EditorClassIdentifier: 
+  itemName: RottenEgg
+  fallSpeed: 3
+  scoreValue: -5
+  objectSprite: {fileID: -2455129757096176017, guid: 544d452b4edb7d342bb30cf6ac2891c0, type: 3}
+  brokenSprite: {fileID: -2649814935344188226, guid: 8ee10b64cf8627d44ad42b5c46665f8a, type: 3}
+  SpawnChance: 5
+  Bonus: 1
+  Heal: 0
+  Bad: 1
+  Mult: 1

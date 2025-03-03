@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BrokenGoldenEggItem_Gameplay_0: -3428827020632220241
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

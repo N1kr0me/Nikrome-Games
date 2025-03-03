@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FarmSky (Outline and Dithered)_0: 3055443675187441323
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

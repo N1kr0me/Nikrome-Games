@@ -1,0 +1,17 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="HighScoreManager">
+			<method name="SaveScore"/>
+		</type>
+		<type fullname="SceneChangerButton">
+			<method name="OpenScene"/>
+			<method name="OpenScene"/>
+			<method name="OpenScene"/>
+			<method name="OpenScene"/>
+			<method name="OpenScene"/>
+			<method name="OpenScene"/>
+			<method name="OpenScene"/>
+			<method name="OpenScene"/>
+		</type>
+	</assembly>
+</linker>

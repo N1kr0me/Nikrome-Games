@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GoldenEggItem_Gameplay_0: 6233753420399543072
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

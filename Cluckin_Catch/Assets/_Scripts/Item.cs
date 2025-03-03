@@ -50,7 +50,21 @@ public class Item : MonoBehaviour
             // If the item collides with the player
             else if (collision.CompareTag("Player"))
             {
-                gameManager.IncreaseScore(itemData.scoreValue); // Increase score
+                if(itemData.Heal)
+                {
+                    gameManager.IncreaseChances();
+                }
+                else
+                {
+                    if(itemData.Bad)
+                    {
+                        gameManager.IncreaseScore(itemData.scoreValue,0); // alter score but not count
+                    }
+                    else
+                    {
+                        gameManager.IncreaseScore(itemData.scoreValue,1); // alter Score and count
+                    }
+                }   
                 DestroyAll(); // Destroy the item
             }
             
