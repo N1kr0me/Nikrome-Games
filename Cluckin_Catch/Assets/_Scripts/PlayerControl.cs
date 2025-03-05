@@ -26,21 +26,30 @@ public class PlayerControl : MonoBehaviour
 
     void HandleInput()
     {
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        moveInput = Vector2.zero; // Reset movement input
+
+        // Touch Input (Mobile)
+        if (Input.touchCount > 0)
         {
-            if (Input.touchCount > 0)
+            Touch touch = Input.GetTouch(0);
+            float screenHalf = Screen.width / 2;
+
+            if (touch.phase == UnityEngine.TouchPhase.Began || 
+                touch.phase == UnityEngine.TouchPhase.Moved || 
+                touch.phase == UnityEngine.TouchPhase.Stationary)
             {
-                Touch touch = Input.GetTouch(0);
-                Vector3 touchWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
-                // Move towards touch smoothly
-                moveInput.x = Mathf.Clamp(touchWorldPos.x - transform.position.x, -1, 1);
-            }
-            else
-            {
-                moveInput = Vector2.zero;
+                moveInput.x = (touch.position.x < screenHalf) ? -1f : 1f;
             }
         }
-        else
+        // Mouse Input (For Testing on PC)
+        else if (Input.GetMouseButton(0)) // Left-click held down
+        {
+            float screenHalf = Screen.width / 2;
+            moveInput.x = (Input.mousePosition.x < screenHalf) ? -1f : 1f;
+        }
+        
+        // Keyboard input (processed only if no touch/mouse input is active)
+        if (moveInput.x == 0)
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");
         }
