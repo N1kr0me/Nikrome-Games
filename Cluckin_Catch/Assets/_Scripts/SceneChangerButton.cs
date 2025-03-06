@@ -6,5 +6,6 @@ public class SceneChangerButton : MonoBehaviour
     public void OpenScene(string SceneName)
     {
         SceneManager.LoadScene(SceneName);
+        AudioManager.Instance.PlayClickSound();
     }
 }

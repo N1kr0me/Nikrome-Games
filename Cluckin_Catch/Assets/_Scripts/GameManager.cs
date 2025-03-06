@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int count=0;//no of items caught
     public GameObject GameOver;
 
+
     void Awake()
     {
         // Singleton pattern to ensure only one GameManager exists
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         score += value; // Increase score when egg is caught
         count+=c; 
-        Debug.Log("Egg caught") ;  
+        Debug.Log("Egg caught") ;
     }
 
     public void DecreaseChances()
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Over");
             flag = false;
             GameOver.SetActive(true);
+            AudioManager.Instance.PlayGameOverMusic();
         }
     }
     public void IncreaseChances()

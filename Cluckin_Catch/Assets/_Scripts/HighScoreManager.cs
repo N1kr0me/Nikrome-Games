@@ -19,6 +19,7 @@ public class HighScoreManager : MonoBehaviour
         {
             SaveMessage.text = "Already saved.";
             SaveMessage.gameObject.SetActive(true);
+            AudioManager.Instance.PlayClickSound();
             return;
         }
 
@@ -26,6 +27,7 @@ public class HighScoreManager : MonoBehaviour
         {
             SaveMessage.text = "Enter name to save.";
             SaveMessage.gameObject.SetActive(true);
+            AudioManager.Instance.PlayEggBrokenSound();
             return;
         }
 
@@ -47,6 +49,7 @@ public class HighScoreManager : MonoBehaviour
         SaveHighScores(highScores);
 
         SaveMessage.text = "Score saved!";
+        AudioManager.Instance.PlayEggBonusSound();
         SaveMessage.gameObject.SetActive(true);
         scoreSaved = true;
         lastSavedScore = score; // Mark this session’s score as saved

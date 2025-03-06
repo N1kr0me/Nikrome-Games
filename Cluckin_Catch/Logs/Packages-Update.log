@@ -25,3 +25,11 @@ Update Mode: updateDependencies
 
 The following packages were removed:
   com.unity.textmeshpro@3.0.9
+
+=== Thu Mar  6 20:10:04 2025
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were removed:
+  com.unity.textmeshpro@3.0.9

@@ -46,6 +46,7 @@ public class Item : MonoBehaviour
                 }
                 GetComponent<SpriteRenderer>().sprite = itemData.brokenSprite; // Change to broken egg sprite
                 Invoke(nameof(DestroyAll), 5f); // Destroy after 1 second
+                AudioManager.Instance.PlayEggBrokenSound();
             }
             // If the item collides with the player
             else if (collision.CompareTag("Player"))
@@ -53,16 +54,19 @@ public class Item : MonoBehaviour
                 if(itemData.Heal)
                 {
                     gameManager.IncreaseChances();
+                    AudioManager.Instance.PlayEggBonusSound();
                 }
                 else
                 {
                     if(itemData.Bad)
                     {
                         gameManager.IncreaseScore(itemData.scoreValue,0); // alter score but not count
+                        AudioManager.Instance.PlayEggBrokenSound();
                     }
                     else
                     {
                         gameManager.IncreaseScore(itemData.scoreValue,1); // alter Score and count
+                        AudioManager.Instance.PlayEggCollectedSound();
                     }
                 }   
                 DestroyAll(); // Destroy the item

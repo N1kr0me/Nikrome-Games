@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AudioManager
     - CameraResizer
     - CatchItem
     - FinalScore
@@ -21,13 +22,21 @@ ScriptsOnlyBuild:
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
     Unity.2D.Tilemap.Editor.dll:
+    - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
     - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
+    - UnityEditor.Tilemaps.TilemapEditorToolPreferences
     - UnityEditor.Tilemaps.TilemapPrefabStageHelper
+    Unity.2D.Tilemap.Extras.Editor.dll:
+    - UnityEditor.Tilemaps.GameObjectBrush
+    - UnityEditor.Tilemaps.GroupBrush
+    - UnityEditor.Tilemaps.LineBrush
+    - UnityEditor.Tilemaps.RandomBrush
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.InputActionAsset
     - UnityEngine.InputSystem.InputActionReference
@@ -178,17 +187,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4210}
     - Class: 114
-      Script: {instanceID: 4590}
+      Script: {instanceID: 4592}
     - Class: 114
-      Script: {instanceID: 6530}
+      Script: {instanceID: 6532}
     - Class: 114
-      Script: {instanceID: 7586}
+      Script: {instanceID: 7588}
     - Class: 114
-      Script: {instanceID: 8566}
+      Script: {instanceID: 8568}
     - Class: 114
-      Script: {instanceID: 8646}
+      Script: {instanceID: 8648}
     - Class: 114
-      Script: {instanceID: 9524}
+      Script: {instanceID: 9180}
+    - Class: 114
+      Script: {instanceID: 9526}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -222,6 +233,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -239,21 +254,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4210}
     - Class: 114
-      Script: {instanceID: 4590}
+      Script: {instanceID: 4414}
     - Class: 114
-      Script: {instanceID: 5000}
+      Script: {instanceID: 4592}
     - Class: 114
-      Script: {instanceID: 5160}
+      Script: {instanceID: 5002}
     - Class: 114
-      Script: {instanceID: 5506}
+      Script: {instanceID: 5162}
     - Class: 114
-      Script: {instanceID: 6530}
+      Script: {instanceID: 5508}
     - Class: 114
-      Script: {instanceID: 7586}
+      Script: {instanceID: 6532}
     - Class: 114
-      Script: {instanceID: 8566}
+      Script: {instanceID: 7588}
     - Class: 114
-      Script: {instanceID: 9524}
+      Script: {instanceID: 8568}
+    - Class: 114
+      Script: {instanceID: 9180}
+    - Class: 114
+      Script: {instanceID: 9526}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -271,6 +290,12 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
       Script: {instanceID: 0}
     Assets/Scenes/SetLevel.unity:
     - Class: 1
@@ -316,31 +341,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4210}
     - Class: 114
-      Script: {instanceID: 4470}
+      Script: {instanceID: 4472}
     - Class: 114
-      Script: {instanceID: 4590}
+      Script: {instanceID: 4592}
     - Class: 114
-      Script: {instanceID: 5130}
+      Script: {instanceID: 5132}
     - Class: 114
-      Script: {instanceID: 6252}
+      Script: {instanceID: 6254}
     - Class: 114
-      Script: {instanceID: 6530}
+      Script: {instanceID: 6532}
     - Class: 114
-      Script: {instanceID: 6782}
+      Script: {instanceID: 6784}
     - Class: 114
-      Script: {instanceID: 6818}
+      Script: {instanceID: 6820}
     - Class: 114
-      Script: {instanceID: 7586}
+      Script: {instanceID: 7588}
     - Class: 114
-      Script: {instanceID: 8566}
+      Script: {instanceID: 8568}
     - Class: 114
-      Script: {instanceID: 9178}
+      Script: {instanceID: 9180}
     - Class: 114
-      Script: {instanceID: 9524}
+      Script: {instanceID: 9526}
     - Class: 114
-      Script: {instanceID: 10166}
+      Script: {instanceID: 10168}
     - Class: 114
-      Script: {instanceID: 10642}
+      Script: {instanceID: 10644}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -372,16 +397,16 @@ ScriptsOnlyBuild:
     className: Benchmark01
   - hash:
       serializedVersion: 2
-      Hash: 35e0b31791c377513b6fc7b9568c50cd
-    assemblyName: Assembly-CSharp
-    namespaceName: TMPro.Examples
-    className: Benchmark02
-  - hash:
-      serializedVersion: 2
       Hash: 11a492830b189fafb9ed2f7afa464c56
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: SimpleScript
+  - hash:
+      serializedVersion: 2
+      Hash: 35e0b31791c377513b6fc7b9568c50cd
+    assemblyName: Assembly-CSharp
+    namespaceName: TMPro.Examples
+    className: Benchmark02
   - hash:
       serializedVersion: 2
       Hash: 9eccc4340fcd994586e0dcb134c4612e
@@ -850,6 +875,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionExit2DMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: cf1bcaffb44987bdebd841defec369ce
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: AudioManager
   - hash:
       serializedVersion: 2
       Hash: b09617304e89e69c72c93eb952ebd728
@@ -1761,4 +1792,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/SetLevel.unity
   - Assets/Scenes/HighScore.unity
-  playerPath: D:/Projects/Unity/Nikrome-Games/Cluckin_Catch/Build/WebGL Builds/Grabbix_V1.1
+  playerPath: D:/Projects/Unity/Nikrome-Games/Cluckin_Catch/Build/WebGL Builds/Grabbix_V1.2
