@@ -7,11 +7,40 @@ using System;
 public class HighScoreManager : MonoBehaviour
 {
     public TMP_InputField nameInput;
+    private TouchScreenKeyboard mobileKeyboard;
     public TMP_Text SaveMessage; // Assign "Score Saved" TMP
     private bool scoreSaved = false;
     private static int lastSavedScore = -1; // Track if this session's score was saved
 
     private const int maxHighScores = 10;
+
+    void Start()
+    {
+        nameInput.onSelect.AddListener(OpenKeyboard);
+        nameInput.onDeselect.AddListener(CloseKeyboard);
+    }
+
+    void Update()
+    {
+        // Ensure text input syncs with keyboard input
+        if (mobileKeyboard != null && mobileKeyboard.active)
+        {
+            nameInput.text = mobileKeyboard.text;
+        }
+        if (IsMobileBrowser() && Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Ended) // Detect touch release
+            {
+                if (!RectTransformUtility.RectangleContainsScreenPoint(
+                        nameInput.GetComponent<RectTransform>(), touch.position, null))
+                {
+                    nameInput.DeactivateInputField(); // Close keyboard
+                }
+            }
+        }
+    }
 
     public void SaveScore()
     {
@@ -68,6 +97,29 @@ public class HighScoreManager : MonoBehaviour
         string json = JsonUtility.ToJson(highScoreList);
         PlayerPrefs.SetString("HighScores", json);
         PlayerPrefs.Save();
+    }
+    
+    void OpenKeyboard(string text)
+    {
+        if (IsMobileBrowser())
+        {
+            Debug.Log("Opening Mobile Keyboard...");
+            mobileKeyboard = TouchScreenKeyboard.Open(nameInput.text, TouchScreenKeyboardType.Default);
+        }
+    }
+
+    void CloseKeyboard(string text)
+    {
+        if (IsMobileBrowser() && mobileKeyboard != null)
+        {
+            Debug.Log("Closing Mobile Keyboard...");
+            mobileKeyboard.active = false;
+        }
+    }
+
+    bool IsMobileBrowser()
+    {
+        return Input.touchSupported; // More reliable in WebGL than checking `DeviceType.Handheld`
     }
 }
 

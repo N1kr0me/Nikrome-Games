@@ -7,11 +7,15 @@ public class PlayerControl : MonoBehaviour
     private Vector2 moveInput;
     private float screenHalfWidthWorld;
     private GameManager gameManager;
+    private float currentSpeed = 0f;
+    private float accelerationTime = 0.5f;
+    private float acceleration; 
 
     void Start()
     {
         gameManager = GameManager.Instance;
         CalculateScreenBounds();
+        acceleration = moveSpeed / accelerationTime;
     }
 
     void Update()
@@ -57,7 +61,19 @@ public class PlayerControl : MonoBehaviour
 
     void MovePlayer()
     {
-        transform.Translate(moveInput.x*moveSpeed*Time.deltaTime,0,0);
+        if (moveInput.x != 0)
+        {
+            // Accelerate towards max speed
+            currentSpeed = Mathf.MoveTowards(currentSpeed, moveSpeed, acceleration * Time.deltaTime);
+        }
+        else
+        {
+            // Instantly stop when no input is given
+            currentSpeed = 0f;
+        }
+
+        // Move basket
+        transform.Translate(moveInput.x * currentSpeed * Time.deltaTime, 0, 0);
     }
 
     void ClampPosition()

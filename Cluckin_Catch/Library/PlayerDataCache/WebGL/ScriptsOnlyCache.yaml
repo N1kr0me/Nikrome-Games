@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - HighScoreManager
     - Item
     - ItemSpawner
+    - Orienter
     - PlayerControl
     - SceneChangerButton
     Unity.2D.Animation.Editor.dll:
@@ -273,6 +274,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9180}
     - Class: 114
       Script: {instanceID: 9526}
+    - Class: 114
+      Script: {instanceID: 29248}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -385,28 +388,28 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 593a641cd7822a10b9a54aa9eb5c3d5e
-    assemblyName: Assembly-CSharp
-    namespaceName: TMPro.Examples
-    className: Benchmark04
-  - hash:
-      serializedVersion: 2
       Hash: 216f6c07bfa250e44b3e8d62572474e8
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: Benchmark01
   - hash:
       serializedVersion: 2
-      Hash: 11a492830b189fafb9ed2f7afa464c56
-    assemblyName: Assembly-CSharp
-    namespaceName: TMPro.Examples
-    className: SimpleScript
-  - hash:
-      serializedVersion: 2
       Hash: 35e0b31791c377513b6fc7b9568c50cd
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: Benchmark02
+  - hash:
+      serializedVersion: 2
+      Hash: 593a641cd7822a10b9a54aa9eb5c3d5e
+    assemblyName: Assembly-CSharp
+    namespaceName: TMPro.Examples
+    className: Benchmark04
+  - hash:
+      serializedVersion: 2
+      Hash: 11a492830b189fafb9ed2f7afa464c56
+    assemblyName: Assembly-CSharp
+    namespaceName: TMPro.Examples
+    className: SimpleScript
   - hash:
       serializedVersion: 2
       Hash: 9eccc4340fcd994586e0dcb134c4612e
@@ -1787,9 +1790,15 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 97723f0b01ccfcf97d50214552abe997
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Orienter
   platform: 20
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/SetLevel.unity
   - Assets/Scenes/HighScore.unity
-  playerPath: D:/Projects/Unity/Nikrome-Games/Cluckin_Catch/Build/WebGL Builds/Grabbix_V1.2
+  playerPath: D:/Projects/Unity/Nikrome-Games/Cluckin_Catch/Build/WebGL Builds/Grabbix_V1.3
