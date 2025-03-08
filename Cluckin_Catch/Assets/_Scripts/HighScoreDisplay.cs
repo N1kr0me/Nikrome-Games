@@ -1,41 +1,84 @@
 using UnityEngine;
+using UnityEngine.Networking;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
+using System;
+
+[System.Serializable]
+public class HighScoreEntry
+{
+    public string playerName;
+    public int score;
+    public int eggs;
+}
+
+[System.Serializable]
+public class HighScoreList
+{
+    public List<HighScoreEntry> highScores;
+}
 
 public class HighScoreDisplay : MonoBehaviour
 {
-    public Transform highscoreContainer;  // Parent container for high scores
-    public GameObject highScoreTemplate;  // Prefab for a single entry
-    private const int maxDisplayedScores = 5; // Show only 5 entries
+    public Transform highscoreContainer;
+    public GameObject highScoreTemplate;
+    
+    private string sheetURL = "https://script.google.com/macros/s/AKfycbwArpzfgrwxbcvGJJBMBY1jtdZjHHtFjxSQcl1k8IoLq5XHJSuWib0ZPHikWYdogQw_/exec";
 
     void Start()
     {
-        DisplayHighScores();
+        LoadHighScores();
     }
 
-    void DisplayHighScores()
+    public void LoadHighScores()
     {
-        List<HighScoreEntry> highScores = LoadHighScores();
-        highScores = highScores.Take(maxDisplayedScores).ToList(); // Limit to 5 entries
+        StartCoroutine(GetHighScores());
+    }
 
-        foreach (var scoreEntry in highScores)
+    IEnumerator GetHighScores()
+    {
+        UnityWebRequest request = UnityWebRequest.Get(sheetURL);
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
         {
-            GameObject newEntry = Instantiate(highScoreTemplate, highscoreContainer);
-            newEntry.SetActive(true);
+            Debug.Log("Raw JSON Response: " + request.downloadHandler.text);
 
-            TextMeshProUGUI[] textElements = newEntry.GetComponentsInChildren<TextMeshProUGUI>();
-            textElements[0].text = (highScores.IndexOf(scoreEntry) + 1).ToString(); // Position
-            textElements[1].text = scoreEntry.playerName;  // Name
-            textElements[2].text = scoreEntry.eggs.ToString(); // Egg Count
-            textElements[3].text = scoreEntry.score.ToString(); // Score
+            try
+            {
+                HighScoreList highScoreList = JsonUtility.FromJson<HighScoreList>(request.downloadHandler.text);
+
+                if (highScoreList != null && highScoreList.highScores != null)
+                {
+                    int rank = 1;
+
+                    foreach (var entry in highScoreList.highScores)
+                    {
+                        GameObject newEntry = Instantiate(highScoreTemplate, highscoreContainer);
+                        newEntry.SetActive(true);
+                        
+                        TextMeshProUGUI[] textElements = newEntry.GetComponentsInChildren<TextMeshProUGUI>();
+                        textElements[0].text = rank.ToString(); // Position
+                        textElements[1].text = entry.playerName;  // Name
+                        textElements[2].text = entry.eggs.ToString(); // Egg Count
+                        textElements[3].text = entry.score.ToString(); // Score
+                        rank++;
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Parsed HighScoreList is empty or null.");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Error parsing JSON: {e.Message}");
+            }
         }
-    }
-
-    private List<HighScoreEntry> LoadHighScores()
-    {
-        string json = PlayerPrefs.GetString("HighScores", "{}");
-        HighScoreList highScoreList = JsonUtility.FromJson<HighScoreList>(json) ?? new HighScoreList();
-        return highScoreList.highScores ?? new List<HighScoreEntry>();
+        else
+        {
+            Debug.LogError("Error retrieving scores: " + request.error);
+        }
     }
 }

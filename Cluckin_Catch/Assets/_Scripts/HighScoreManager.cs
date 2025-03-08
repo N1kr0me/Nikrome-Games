@@ -1,18 +1,18 @@
 using UnityEngine;
+using UnityEngine.Networking;
+using System.Collections;
 using TMPro;
-using System.Collections.Generic;
-using System.Linq;
 using System;
 
 public class HighScoreManager : MonoBehaviour
 {
     public TMP_InputField nameInput;
     private TouchScreenKeyboard mobileKeyboard;
-    public TMP_Text SaveMessage; // Assign "Score Saved" TMP
+    public TMP_Text SaveMessage;
     private bool scoreSaved = false;
-    private static int lastSavedScore = -1; // Track if this session's score was saved
+    private static int lastSavedScore = -1;
 
-    private const int maxHighScores = 10;
+    private string sheetURL = "https://script.google.com/macros/s/AKfycbwArpzfgrwxbcvGJJBMBY1jtdZjHHtFjxSQcl1k8IoLq5XHJSuWib0ZPHikWYdogQw_/exec";
 
     void Start()
     {
@@ -27,16 +27,16 @@ public class HighScoreManager : MonoBehaviour
         {
             nameInput.text = mobileKeyboard.text;
         }
+
+        // Close keyboard when tapping outside
         if (IsMobileBrowser() && Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Ended) // Detect touch release
+            if (touch.phase == TouchPhase.Ended)
             {
-                if (!RectTransformUtility.RectangleContainsScreenPoint(
-                        nameInput.GetComponent<RectTransform>(), touch.position, null))
+                if (!RectTransformUtility.RectangleContainsScreenPoint(nameInput.GetComponent<RectTransform>(), touch.position, null))
                 {
-                    nameInput.DeactivateInputField(); // Close keyboard
+                    nameInput.DeactivateInputField();
                 }
             }
         }
@@ -48,57 +48,48 @@ public class HighScoreManager : MonoBehaviour
         {
             SaveMessage.text = "Already saved.";
             SaveMessage.gameObject.SetActive(true);
-            AudioManager.Instance.PlayClickSound();
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(nameInput.text)) // Check if name is empty
+        if (string.IsNullOrWhiteSpace(nameInput.text))
         {
             SaveMessage.text = "Enter name to save.";
             SaveMessage.gameObject.SetActive(true);
-            AudioManager.Instance.PlayEggBrokenSound();
             return;
         }
 
-        SaveMessage.gameObject.SetActive(false); // Hide any previous messages
+        SaveMessage.gameObject.SetActive(false);
 
         string playerName = nameInput.text.Length > 6 ? nameInput.text.Substring(0, 6) : nameInput.text;
         int score = GameManager.Instance.GetScore();
         int eggs = GameManager.Instance.GetCount();
-        long timestamp = DateTime.UtcNow.Ticks; // Unique timestamp for different game sessions
 
-        List<HighScoreEntry> highScores = LoadHighScores();
-
-        // Save new entry
-        highScores.Add(new HighScoreEntry { playerName = playerName, score = score, eggs = eggs, timestamp = timestamp });
-
-        // Sort and keep only the top 5 (since you mentioned only 5 fit)
-        highScores = highScores.OrderByDescending(h => h.score).Take(maxHighScores).ToList();
-
-        SaveHighScores(highScores);
+        StartCoroutine(PostHighScore(playerName, score, eggs));
 
         SaveMessage.text = "Score saved!";
-        AudioManager.Instance.PlayEggBonusSound();
         SaveMessage.gameObject.SetActive(true);
         scoreSaved = true;
-        lastSavedScore = score; // Mark this session’s score as saved
+        lastSavedScore = score;
     }
 
-    private List<HighScoreEntry> LoadHighScores()
+    IEnumerator PostHighScore(string name, int score, int eggs)
     {
-        string json = PlayerPrefs.GetString("HighScores", "{}");
-        HighScoreList highScoreList = JsonUtility.FromJson<HighScoreList>(json) ?? new HighScoreList();
-        return highScoreList.highScores ?? new List<HighScoreEntry>();
+        string json = $"{{\"name\":\"{name}\",\"score\":{score},\"eggs\":{eggs}}}";
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+
+        UnityWebRequest request = new UnityWebRequest(sheetURL, "POST");
+        request.uploadHandler = new UploadHandlerRaw(jsonToSend);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+            Debug.Log("Score saved successfully!");
+        else
+            Debug.LogError("Error saving score: " + request.error);
     }
 
-    private void SaveHighScores(List<HighScoreEntry> highScores)
-    {
-        HighScoreList highScoreList = new HighScoreList { highScores = highScores };
-        string json = JsonUtility.ToJson(highScoreList);
-        PlayerPrefs.SetString("HighScores", json);
-        PlayerPrefs.Save();
-    }
-    
     void OpenKeyboard(string text)
     {
         if (IsMobileBrowser())
@@ -119,21 +110,6 @@ public class HighScoreManager : MonoBehaviour
 
     bool IsMobileBrowser()
     {
-        return Input.touchSupported; // More reliable in WebGL than checking `DeviceType.Handheld`
+        return Input.touchSupported; // Works better in WebGL
     }
-}
-
-[System.Serializable]
-public class HighScoreEntry
-{
-    public string playerName;
-    public int score;
-    public int eggs;
-    public long timestamp; // Used to differentiate identical scores from different sessions
-}
-
-[System.Serializable]
-public class HighScoreList
-{
-    public List<HighScoreEntry> highScores;
 }
